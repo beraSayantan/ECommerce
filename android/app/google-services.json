@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "627170351777",
+    "project_id": "e-commerse-7321b",
+    "storage_bucket": "e-commerse-7321b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627170351777:android:172c244833ac9efe0d2ee0",
+        "android_client_info": {
+          "package_name": "com.sayantan.shopping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627170351777-so3acfh3ehf6ggem14m839o2c00jsv31.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWX9-ddd1dNmNr-vgmPR3aU0KZeMUJ8WY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627170351777-so3acfh3ehf6ggem14m839o2c00jsv31.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "627170351777-aagn0agr1reh32hkinteem8s345kbqur.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sayantan.shopping"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
