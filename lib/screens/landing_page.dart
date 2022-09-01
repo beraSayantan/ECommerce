@@ -28,7 +28,7 @@ class LandingPage extends StatelessWidget {
             builder: (context, streamSnapshot) {
 
               // If stream snapshot has error
-              if(snapshot.hasError) {
+              if(streamSnapshot.hasError) {
                 return Scaffold(
                   body: Center(
                     child: Text("Error: ${streamSnapshot.error}"),
