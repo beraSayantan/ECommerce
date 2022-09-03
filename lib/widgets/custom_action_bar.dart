@@ -26,7 +26,7 @@ class CustomActionBar extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: _hasBackground ? LinearGradient(
           colors: [
-            Colors.white,
+            Color(0xFFB2D3C2),
             Colors.white.withOpacity(0),
           ],
           begin: Alignment(0,0),

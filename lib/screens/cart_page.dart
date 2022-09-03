@@ -22,6 +22,7 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFE6FFE6),
       body: Stack(
         children: [
           FutureBuilder<QuerySnapshot>(

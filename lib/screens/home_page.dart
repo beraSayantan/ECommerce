@@ -34,6 +34,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFE6FFE6),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
