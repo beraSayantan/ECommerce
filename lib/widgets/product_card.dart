@@ -45,16 +45,28 @@ class ProductCard extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      title!,
-                      style: Constants.regularHeading,
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.8),
+                        borderRadius: BorderRadius.circular(7.0),
+                      ),
+                      child: Text(
+                        title!,
+                        style: Constants.regularHeading,
+                      ),
                     ),
-                    Text(
-                      price!,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: Theme.of(context).accentColor,
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.8),
+                        borderRadius: BorderRadius.circular(7.0),
+                      ),
+                      child: Text(
+                        price!,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: Theme.of(context).accentColor,
+                        ),
                       ),
                     ),
                   ],

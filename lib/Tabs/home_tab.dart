@@ -51,6 +51,7 @@ class HomeTab extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 ),
               );
+
             },
           ),
           CustomActionBar(
