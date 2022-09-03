@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping/constants.dart';
+import 'package:shopping/services/firebase_services.dart';
 import 'package:shopping/widgets/custom_action_bar.dart';
 import 'package:shopping/widgets/image_swipe.dart';
+import 'package:shopping/widgets/product_size.dart';
 
 class ProductPage extends StatefulWidget {
   final String? productId;
@@ -13,7 +16,18 @@ class ProductPage extends StatefulWidget {
 }
 
 class _ProductPageState extends State<ProductPage> {
-  final CollectionReference _productsRef = FirebaseFirestore.instance.collection('Products');
+  FirebaseServices _firebaseServices = FirebaseServices();
+  String _selectedProductSize = "0";
+
+  Future _addToCart() {
+    return _firebaseServices.usersRef
+        .doc(_firebaseServices.getUserId())
+        .collection("Cart")
+        .doc(widget.productId)
+        .set({"size": _selectedProductSize});
+  }
+
+  final SnackBar _snackBar = SnackBar(content: Text("Prooduct added to cart"),);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +35,7 @@ class _ProductPageState extends State<ProductPage> {
       body: Stack(
         children: [
           FutureBuilder(
-            future: _productsRef.doc(widget.productId).get(),
+            future: _firebaseServices.productsRef.doc(widget.productId).get(),
             builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
 
               if(snapshot.hasError) {
@@ -39,6 +53,11 @@ class _ProductPageState extends State<ProductPage> {
 
                 //List of images
                 List imageList = documentData['images'];
+                List productSizes = documentData['size'];
+
+                //Set an initial size
+                _selectedProductSize = productSizes[0];
+
                 return ListView(
                   padding: EdgeInsets.all(0),
                   children: [
@@ -91,6 +110,62 @@ class _ProductPageState extends State<ProductPage> {
                         style: Constants.regularDarkText,
                       ),
                     ),
+                    ProductSize(
+                      productSizes: productSizes,
+                      onSelected: (size) {
+                        _selectedProductSize = size;
+                      },
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(24.0),
+                      child: Row(
+                        //mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 65.0,
+                            height: 65.0,
+                            decoration: BoxDecoration(
+                              color: Color(0xFFDCDCDC),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            alignment: Alignment.center,
+                            child: Image(
+                              image: AssetImage(
+                                "assets/images/tab_save.png"
+                              ),
+                              height: 22.0,
+                            ),
+                          ),
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () async {
+                                await _addToCart();
+                                Scaffold.of(context).showSnackBar(_snackBar);
+                              },
+                              child: Container(
+                                height: 65.0,
+                                margin: EdgeInsets.only(
+                                  left: 16.0,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.black,
+                                  borderRadius: BorderRadius.circular(12.0),
+                                ),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Add to cart",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 );
               }
