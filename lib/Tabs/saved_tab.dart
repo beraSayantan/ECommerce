@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:shopping/services/firebase_services.dart';
 import 'package:shopping/widgets/custom_action_bar.dart';
 
 class SavedTab extends StatelessWidget {
-  const SavedTab({Key? key}) : super(key: key);
+
+  FirebaseServices _firebaseServices = FirebaseServices();
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class SavedTab extends StatelessWidget {
           ),
           CustomActionBar(
             title: "Saved",
-            hasBackArrow: true,
+            hasBackArrow: false,
           ),
         ],
       ),
