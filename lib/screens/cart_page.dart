@@ -63,19 +63,6 @@ class _CartPageState extends State<CartPage> {
                           if(productSnap.connectionState == ConnectionState.done) {
                             Map _productMap = productSnap.data!.data() as Map;
 
-                            // return Container(
-                            //   decoration: BoxDecoration(
-                            //     borderRadius: BorderRadius.circular(12.0),
-                            //   ),
-                            //   margin: EdgeInsets.symmetric(
-                            //     vertical: 12.0,
-                            //     horizontal: 24.0,
-                            //   ),
-                            //   child: Container(
-                            //     child: Text("${_productMap["name"]}"),
-                            //   ),
-                            // );
-
                             return Padding(
                               padding: EdgeInsets.symmetric(
                                 vertical: 16.0,
